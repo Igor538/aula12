@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListaSimples - Comentários</title>
+    <style>
+
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #007BFF;
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p.description {
+            text-align: center;
+            color: #667;
+            margin-bottom: 25px;
+        }
+        form input[type="text"] {
+            width: 75%;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        form button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #218838;
+        }
+        .comentario {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .comentario button {
+            background-color: #dc3545;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .comentario button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'ola' %}">Bem-vindo</a>
+    <a href="{% url 'index' %}">Lista de Afazeres</a>
+    <a href="{% url 'comentario' %}">Comentários</a>
+    <a href="{% url 'logout' %}">Sair</a>
+</nav>
+
+<div class="container">
+    <h1>ListaSimples - Comentários</h1>
+    <p class="description">Adicione seus comentários sobre suas tarefas ou notas importantes. Tudo organizado em um só lugar.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="conteudo" placeholder="Adicionar novo comentário" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    {% for comentario in comentarios %}
+<div class="comentario">
+    {% if editar_id == comentario.id %}
+        <form method="post" action="{% url 'editar_comentario' comentario.id %}">
+            {% csrf_token %}
+            {{ form_editar.conteudo }}
+            <button type="submit" style="background-color:#28a745;">Salvar</button>
+        </form>
+    {% else %}
+        {{ comentario.conteudo }}
+        <div>
+            <form action="{% url 'remove_comentario' comentario.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Remover</button>
+            </form>
+            <form action="{% url 'editar_comentario' comentario.id %}" method="get" style="display:inline;">
+                <button type="submit" style="background-color:#ffc107;">Editar</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% empty %}
+<p>Ainda não há comentários.</p>
+{% endfor %}
+</div>
+
+</body>
+</html>
