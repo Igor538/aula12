@@ -1,0 +1,37 @@
+# Ambiente virtual
+venv/
+.venv
+ENV/
+env/
+
+# Arquivo de variáveis de ambiente
+.env
+
+# Banco de dados local
+db.sqlite3
+
+# Compilados Python
+__pycache__/
+*.pyc
+
+# Arquivos do Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Migrations auto gerados
+*/migrations/*
+!*/migrations/__init__.py
+
+# Cache do Django
+staticfiles/
+media/
+
+# VSCode
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
