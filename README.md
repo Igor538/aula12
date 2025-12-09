@@ -6,64 +6,46 @@
 
 ## 🛠 Tecnologias
 
-- Python 3.x  
-- Django 5.2.8  
-- Django REST Framework  
-- SQLite (desenvolvimento)  
-- Gunicorn  
-- django-cors-headers  
+- 🐍 Python 3.x  
+- 🌐 Django 5.2.8  
+- 📦 Django REST Framework  
+- 💾 SQLite (desenvolvimento)  
+- 🚀 Gunicorn  
+- 🔌 django-cors-headers  
 
 ---
 
-## 🚀 Passo a Passo
+## 🚀 Passo a Passo para Rodar o Projeto
 
-1️⃣ **Clone o repositório**  
 ```bash
+# 1️⃣ Clone o repositório
 git clone https://github.com/seu-usuario/aula12.git
 cd aula12
 
-2️⃣ Crie e ative o ambiente virtual
-
-Windows:
-
-bash
-Copiar código
+# 2️⃣ Crie e ative o ambiente virtual
+# Windows:
 python -m venv venv
 .\venv\Scripts\activate
-Linux/Mac:
 
-bash
-Copiar código
+# Linux/Mac:
 python3 -m venv venv
 source venv/bin/activate
 
-3️⃣ Instale as dependências
-
-bash
-Copiar código
+# 3️⃣ Instale as dependências do projeto
 pip install -r requirements.txt
 
-4️⃣ Configure as variáveis de ambiente
-Crie um arquivo .env na raiz do projeto:
+# 4️⃣ Configure as variáveis de ambiente
+# Crie um arquivo .env na raiz do projeto com:
+echo "SECRET_KEY=sua-chave-secreta" >> .env
+echo "DEBUG=True" >> .env
+echo "ALLOWED_HOSTS=localhost,127.0.0.1" >> .env
+echo "DATABASE_URL=sqlite:///db.sqlite3" >> .env
 
-env
-Copiar código
-SECRET_KEY=sua-chave-secreta
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
-
-5️⃣ Execute as migrações
-
-bash
-Copiar código
+# 5️⃣ Execute as migrações do Django
 python manage.py migrate
 
-6️⃣ Inicie o servidor de desenvolvimento
-
-bash
-Copiar código
+# 6️⃣ Inicie o servidor de desenvolvimento
 python manage.py runserver
 
-7️⃣ Acesse o projeto
-Abra o navegador em http://127.0.0.1:8000/
+# 7️⃣ Abra o projeto no navegador
+# Acesse em: http://127.0.0.1:8000/
