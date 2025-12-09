@@ -21,7 +21,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'servestatic.middleware.ServeStaticMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,13 +68,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS  = []
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5500",
+    "http://127.0.0.1:5500",  
 ]
 CORS_ALLOW_CREDENTIALS = True
 
@@ -84,6 +84,5 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 8,
 }
 
-# Redirecionamentos de login
 LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/home/"
