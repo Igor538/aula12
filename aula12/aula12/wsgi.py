@@ -1,5 +1,5 @@
 """
-WSGI config for aula11 project.
+WSGI config for aula12 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
