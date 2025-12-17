@@ -9,7 +9,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
     '127.0.0.1',  
     'localhost',  
-    'aula12-elqn.onrender.com', 
+    '.onrender.com', 
 ]
 
 INSTALLED_APPS = [
